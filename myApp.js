@@ -1,8 +1,14 @@
 let express = require('express');
 let app = express();
 
-console.log("Hello World");
 
+// Define a route for the root URL ("/")
+
+function	handleRootReq(req, res) {
+	res.send('Hello Express');
+}
+
+app.get('/', handleRootReq);
 
 
 

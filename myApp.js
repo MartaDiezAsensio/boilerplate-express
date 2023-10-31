@@ -14,10 +14,10 @@ let app = express();
 // 	res.send('Hello Express');
 // })
 
-absolutePath = __dirname + '/views/index.html';
+//absolutePath = __dirname + '/views/index.html';
 
 app.get('/', (req, res) => {
-	res.sendFile(absolutePath);
+	res.sendFile(__dirname + '/views/index.html');
 });
 
 

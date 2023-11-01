@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
-require('dotenv').config();
 
+require('dotenv').config();
 
 // Define a route for the root URL ("/")
 
@@ -10,6 +10,14 @@ require('dotenv').config();
 // })
 
 
+// Custom middleware for logging request details.
+// Morgan framework does that
+
+app.use((req, res, next) => {
+	const { method, path, ip } = req;
+	console.log(`${method} ${path} - ${ip}`);
+	next();
+})
 
 app.get('/', (req, res) => {
 	app.use('/public', express.static(__dirname + '/public'));
@@ -23,8 +31,6 @@ app.get('/json', (req, res) => {
 		res.json({"message": "Hello json"});
 	}
 })
-
-
 
 
 
